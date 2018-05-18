@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home - Kiriata</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2 text-center>Filmes mais populares</h2>
+  <ion-list>
+    <ion-item *ngFor="let x of filmesPopular.results" (click)="verDetalhe(x)">{{x.title}}</ion-item>
+  </ion-list>
+  <button ion-button secondary menuToggle>Toggle Menu</button>
+</ion-content>

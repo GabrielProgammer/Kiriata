@@ -1,0 +1,8 @@
+{
+  "name": "kiriata",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
