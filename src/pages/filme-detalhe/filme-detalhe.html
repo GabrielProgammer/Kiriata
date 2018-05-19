@@ -21,7 +21,17 @@
 	  	<ion-title class="title-card" text-center>
 	  		{{filme.title}}
 	  	</ion-title>
+	  	<button ion-button full round icon-right (click)="remFavorito()" *ngIf="favorito" color="danger">
+	  		Remover dos favoritos
+	  		<ion-icon name="star"></ion-icon>
+	  	</button>
+	  	<button ion-button full round icon-right (click)="addFavorito()" *ngIf="!favorito">
+	  		Adicionar aos favoritos
+	  		<ion-icon name="star"></ion-icon>
+	  	</button>
+
 	  	
+
 		<p><b>Idioma Original:</b> {{filme.original_language}}</p>
 		<p><b>Título Original:</b> {{filme.original_title}}</p>
 		<p><b>Data de lançamento:</b> {{filme.release_date}}</p>
@@ -32,4 +42,13 @@
 	  </ion-card-content>
 	
 	</ion-card>
+	<!-- <ion-fab bottom right>
+    <button ion-fab mini (click)="addFavorito()" *ngIf="!favorito">
+    	<ion-icon name="star"></ion-icon>
+    </button>
+
+    <button ion-fab mini (click)="remFavorito()" *ngIf="favorito" color="danger">
+    	<ion-icon name="star-outline"></ion-icon>
+    </button>
+  </ion-fab> -->
 </ion-content>
