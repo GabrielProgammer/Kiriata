@@ -7,19 +7,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>filme-detalhe</ion-title>
+    <ion-title>{{ filme.title }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-	<ion-list>
+	<ion-card>
 		<img src="https://image.tmdb.org/t/p/w500{{filme.backdrop_path}}">
-		<ion-item>Nome: {{filme.title}} </ion-item>
-		<ion-item>Idioma Original: {{filme.original_language}}</ion-item>
-		<ion-item>Título Original: {{filme.original_title}}</ion-item>
-		<ion-item>Data de lançamento: {{filme.release_date}}</ion-item>
-		Sinopse: {{filme.overview}}
-	</ion-list>
+	
+	  <ion-card-content>
+	  	<ion-title class="title-card" text-center>
+	  		{{filme.title}}
+	  	</ion-title>
+	  	
+		<p><b>Idioma Original:</b> {{filme.original_language}}</p>
+		<p><b>Título Original:</b> {{filme.original_title}}</p>
+		<p><b>Data de lançamento:</b> {{filme.release_date}}</p>
+		<ion-title text-center>
+			Sinopse 
+		</ion-title> 
+		<p text-justify>{{filme.overview}}</p>
+	  </ion-card-content>
+	
+	</ion-card>
 </ion-content>
