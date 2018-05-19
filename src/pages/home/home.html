@@ -8,9 +8,13 @@
 </ion-header>
 
 <ion-content padding>
-  <h2 text-center>Filmes mais populares</h2>
+  <ion-item text-center>
+  Filmes mais populares
+  </ion-item>
   <ion-list>
-    <ion-item *ngFor="let x of filmesPopular.results" (click)="verDetalhe(x)">{{x.title}}</ion-item>
+    <ion-item *ngFor="let x of filmesPopular.results" (click)="verDetalhe(x)"><ion-avatar item-start>
+      <img src="https://image.tmdb.org/t/p/w200{{x.backdrop_path}}">
+    </ion-avatar>{{x.title}}</ion-item>
   </ion-list>
   <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>

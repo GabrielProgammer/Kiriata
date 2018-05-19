@@ -39,6 +39,7 @@
 			Sinopse 
 		</ion-title> 
 		<p text-justify>{{filme.overview}}</p>
+		<p text-center *ngIf="filme.overview == ''">Não disponivel :c</p>
 	  </ion-card-content>
 	
 	</ion-card>
