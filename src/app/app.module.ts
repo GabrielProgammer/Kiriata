@@ -13,13 +13,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiProvider } from '../providers/api/api';
 import { FunctionsProvider } from '../providers/functions/functions';
 import { IonicStorageModule } from '@ionic/storage';
+import { SearchPipe } from '../pipes/search/search';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    FilmeDetalhePage
+    FilmeDetalhePage,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

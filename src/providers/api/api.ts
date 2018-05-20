@@ -27,4 +27,8 @@ export class ApiProvider {
   		+"&language=pt-BR");
   }
 
+  getPesquisa(termo): any {
+    return this.http.get('https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey +
+      '&language=pt-BR&query' + termo +'&page=1&include_adult=false');
+  }
 }

@@ -11,6 +11,7 @@ import { FilmeDetalhePage } from '../filme-detalhe/filme-detalhe';
 export class HomePage {
 	public generos = {genres: ''};
 	public filmesPopular: FilmesPopulares[] = Array();
+	//public pesquisa;
 
   constructor(public navCtrl: NavController, public api: ApiProvider) {
   	this.api.getCategorias().subscribe(res => { this.generos = res; console.log(this.generos.genres[0])});
@@ -20,6 +21,9 @@ export class HomePage {
 
   verDetalhe(x) {
   	this.navCtrl.push(FilmeDetalhePage, {filmeSelecionado: x})
+  }
+
+  pesquisa(evento: any) {
   }
 
 }
