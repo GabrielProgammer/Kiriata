@@ -31,4 +31,8 @@ export class ApiProvider {
     return this.http.get('https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey +
       '&language=pt-BR&query' + termo +'&page=1&include_adult=false');
   }
+  
+  getMovieDetails(id: number): any {
+    return this.http.get<MovieDetail>('https://api.themoviedb.org/3/movie/' + id + '?api_key=' + this.apiKey +  '&language=pt-br');
+  }
 }
