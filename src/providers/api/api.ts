@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FilmesPopulares } from '../../models/filmes-populares';
+import { Filme } from '../../models/filme';
 
 /*
   Generated class for the ApiProvider provider.
@@ -23,16 +23,12 @@ export class ApiProvider {
   }
 
   getCategorias(): any {
-  	return  this.http.get<FilmesPopulares>('https://api.themoviedb.org/3/genre/movie/list?api_key=' + this.apiKey
+  	return  this.http.get<Filme>('htps://api.themoviedb.org/3/genre/movie/list?api_key=' + this.apiKey
   		+"&language=pt-BR");
   }
 
   getPesquisa(termo): any {
     return this.http.get('https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey +
-      '&language=pt-BR&query' + termo +'&page=1&include_adult=false');
-  }
-  
-  getMovieDetails(id: number): any {
-    return this.http.get<MovieDetail>('https://api.themoviedb.org/3/movie/' + id + '?api_key=' + this.apiKey +  '&language=pt-br');
+      '&language=pt-BR&query=' + termo +'&page=1&include_adult=true');
   }
 }

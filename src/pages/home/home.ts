@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
-import { FilmesPopulares } from '../../models/filmes-populares';
+import { Filme } from '../../models/filme';
 import { FilmeDetalhePage } from '../filme-detalhe/filme-detalhe';
 
 @Component({
@@ -10,20 +10,15 @@ import { FilmeDetalhePage } from '../filme-detalhe/filme-detalhe';
 })
 export class HomePage {
 	public generos = {genres: ''};
-	public filmesPopular: FilmesPopulares[] = Array();
-	//public pesquisa;
+	public filmesPopular: Filme[] = Array();
 
   constructor(public navCtrl: NavController, public api: ApiProvider) {
-  	this.api.getCategorias().subscribe(res => { this.generos = res; console.log(this.generos.genres[0])});
-  	this.api.getFilmesPopular().subscribe(res => { this.filmesPopular = res;  
-  		console.log(this.filmesPopular)});
+  	this.api.getFilmesPopular().subscribe(res => { 
+      this.filmesPopular = res.results;  
+  	});
   }
 
   verDetalhe(x) {
   	this.navCtrl.push(FilmeDetalhePage, {filmeSelecionado: x})
   }
-
-  pesquisa(evento: any) {
-  }
-
 }

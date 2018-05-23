@@ -7,13 +7,13 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { FilmeDetalhePage } from '../pages/filme-detalhe/filme-detalhe';
+import { PesquisaPage } from '../pages/pesquisa/pesquisa';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiProvider } from '../providers/api/api';
 import { FunctionsProvider } from '../providers/functions/functions';
 import { IonicStorageModule } from '@ionic/storage';
-import { SearchPipe } from '../pipes/search/search';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { SearchPipe } from '../pipes/search/search';
     HomePage,
     ListPage,
     FilmeDetalhePage,
-    SearchPipe
+    PesquisaPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,8 @@ import { SearchPipe } from '../pipes/search/search';
     MyApp,
     HomePage,
     ListPage,
-    FilmeDetalhePage
+    FilmeDetalhePage,
+    PesquisaPage
   ],
   providers: [
     StatusBar,

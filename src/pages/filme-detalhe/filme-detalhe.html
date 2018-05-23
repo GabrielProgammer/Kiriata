@@ -15,7 +15,9 @@
 
 <ion-content>
 	<ion-card>
-		<img src="https://image.tmdb.org/t/p/w500{{filme.backdrop_path}}">
+		<img *ngIf="filme.poster_path != null" src="https://image.tmdb.org/t/p/w500{{filme.poster_path}}">
+
+		<img  *ngIf="filme.poster_path == null" src="../../assets/imgs/movie.png">
 	
 	  <ion-card-content>
 	  	<ion-title class="title-card" text-center>
