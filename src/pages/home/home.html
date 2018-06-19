@@ -17,5 +17,7 @@
       <img src="https://image.tmdb.org/t/p/w200{{x.poster_path}}">
     </ion-avatar>{{x.title}}</ion-item>
   </ion-list>
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="favoritosPage()"><ion-icon name="bookmark"></ion-icon></button>
+  </ion-fab>
 </ion-content>

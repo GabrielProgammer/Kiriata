@@ -18,9 +18,13 @@ import { FunctionsProvider } from '../../providers/functions/functions';
 export class FilmeDetalhePage {
 	public filme;
 	public favorito;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, 
   	public storage: Storage, public functions: FunctionsProvider) {
   	this.filme = this.navParams.get('filmeSelecionado');
+    console.log(this.filme);
+    if (!this.filme.release_date.mes)
+      this.filme.release_date = this.functions.filtraData(this.filme.release_date);
   	this.storage.get('favorito'+this.filme.title).then((result) => this.favorito = result);
   }
 
@@ -32,6 +36,7 @@ export class FilmeDetalhePage {
   	this.storage.set('favorito' + this.filme.title, true).then((result) => {
   		this.favorito = result;
   		console.log(this.favorito);
+      this.functions.favoritos.push(this.favorito);
   		//this.functions.getFavoritos();
   		this.functions.showToast('Adicionado aos favoritos!');
   	});
@@ -45,5 +50,4 @@ export class FilmeDetalhePage {
   		this.functions.showToast('Removido dos favoritos!');
   	});
   }
-
 }

@@ -1,58 +1,34 @@
-//import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
-//import { LoadingController} from 'ionic-angular';
-//Providers
-import { FuncoesProvider } from '../funcoes/funcoes';
+import { Filme } from '../../models/filme';
 
+/*
+  Generated class for the ApiProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
 @Injectable()
 export class ApiProvider {
-	private apiKey: string = 'https://demo7908592.mockable.io/produtos';
-  
-	constructor(public http: Http) {
-	//, public Funcoes: FuncoesProvider, public load: LoadingController
-	// console.log('Hello ApiProvider Provider');
+	private apiKey: string;
+  constructor(public http: HttpClient) {
+  	this.apiKey = "4e47dbe7f1ea88e915d595fcb76c6170";
+    console.log('Hello ApiProvider Provider');
   }
 
-  //public sanduiches = [];
-  //public loadLocal;
+  getFilmesPopular(): any {
+  	return this.http.get('https://api.themoviedb.org/3/movie/popular?api_key=' + this.apiKey
+  	 + "&language=pt-BR&page=1");
+  	
+  }
 
-  //obterProdutosAPI(){
-  //	return this.http.get('https://my-json-server.typicode.com/gabrielprogammer/api-fake/db')
-  //	.map(res => res.json())
+  getCategorias(): any {
+  	return  this.http.get<Filme>('htps://api.themoviedb.org/3/genre/movie/list?api_key=' + this.apiKey
+  		+"&language=pt-BR");
+  }
 
-		/*this.http.get('https://my-json-server.typicode.com/gabrielprogammer/api-fake/sanduiche') //Dados dos SANDUÍCHES
-	  	.map(response => response.json())
-	  	.toPromise()
-	  	.then(
-	 		response => {
-	   			this.sanduiches = response;
-	   			console.log(this.sanduiches);
-	   			this.loadLocal.dismiss();
-			},
-
-			err => {
-		  		this.Funcoes.erroAPI('Sanduíches');
-		  		this.loadLocal.dismiss();
-		  		this.loadLocal.ready = true;
-		});
-
-  		this.http.get('https://my-json-server.typicode.com/gabrielprogammer/api-fake/pasteis') //Dados dos PASTEIS
-	 		.map(response => response.json())
-			.toPromise()
-			.then(
-				response => {
-					this.pasteis = response;
-				},
-
-		 		err => {
-		 			this.Funcoes.erroAPI('Pastéis');
-			});*/
-//	}
-public obterProdutosAPI(){
-	return this.http.get(this.apiKey)
- .map(res => res.json())
-}
-
+  getPesquisa(termo): any {
+    return this.http.get('https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey +
+      '&language=pt-BR&query=' + termo +'&page=1&include_adult=true');
+  }
 }

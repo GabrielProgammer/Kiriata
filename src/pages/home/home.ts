@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { Filme } from '../../models/filme';
 import { FilmeDetalhePage } from '../filme-detalhe/filme-detalhe';
+import { FavoritosPage }  from '../favoritos/favoritos';
 
 @Component({
   selector: 'page-home',
@@ -20,5 +21,9 @@ export class HomePage {
 
   verDetalhe(x) {
   	this.navCtrl.push(FilmeDetalhePage, {filmeSelecionado: x})
+  }
+
+  favoritosPage() {
+    this.navCtrl.push(FavoritosPage);
   }
 }

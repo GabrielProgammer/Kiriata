@@ -4,8 +4,7 @@
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
-// styles are f
-//or the entire app and not just one component.
+// styles are for the entire app and not just one component.
 // Additionally, this file can be also used as an entry point
 // to import other Sass files to be included in the output CSS.
 //
@@ -16,34 +15,16 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+$color : #CAC2C5;
+
 .toolbar-background{
-		background: #FF8C00;
+		background: $color;
 } 
-
-.tabbar{
-	background: #ffe8cc;
-}
-
-tabbar show-tabbar {
-	background: red;
-}
-
-.content {
-	background: #e58122;
-} 
-
-.list-header {
-		border-radius: 11px;
-		background: #f2dfb8;
-		//background: #d2d8e0;
-		vertical-align: middle;
-}
 
 .item {
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-img.icon-list-header {
-	vertical-align: middle;
-	width: 3rem;
+.content {
+	background-color: #D5D7FB;
 }

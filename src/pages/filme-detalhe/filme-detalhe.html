@@ -37,8 +37,13 @@
 	  		<img src="../../assets/imgs/idioma.png" class="icon"></p>
 		<p><b>Título Original:</b> {{filme.original_title}} 
 			<img src="../../assets/imgs/titulo.png" class="icon"></p>
-		<p><b>Data de lançamento:</b> {{filme.release_date}}
-			<img src="../../assets/imgs/data.png" class="icon"></p>
+      <div class="date">
+        <span class="day">{{filme.release_date.dia}}</span>
+        <span class="month">{{filme.release_date.mes}}</span>
+        <span class="year">{{filme.release_date.ano}}</span>
+      </div>
+		<!-- <p><b>Data de lançamento:</b> {{filme.release_date}}
+			<img src="../../assets/imgs/data.png" class="icon"></p> -->
 		<p><b> Nota:</b> {{filme.vote_average}}
 			<img src="../../assets/imgs/nota.png" class="icon"></p>
 		<p><b>Número de votos:</b> {{filme.vote_count}}
