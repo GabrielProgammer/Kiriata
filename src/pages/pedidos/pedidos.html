@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="signOut()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>
+      Pedidos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+	<ion-content>
+    <ion-list inset >
+      <button ion-item *ngFor="let x of pedidos; let i = index" (click)="pedidoDetalhe(x)" text-center>
+      <ion-icon name="disc"> Pedido {{i+1}}</ion-icon>
+    </button> 
+    </ion-list>
+    <ion-fab right bottom>
+        <button ion-fab color="blue"><ion-icon name="more"></ion-icon></button>
+        <ion-fab-list side="left">
+            <button ion-fab (click)="informaMesa()"><ion-icon name="locate"></ion-icon></button>
+            <button ion-fab (click)="carrinhoPage()"><ion-icon name="cart"></ion-icon></button>
+            <button ion-fab (click)="confirmaCompra()"><ion-icon name="checkmark"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
+   <!--  <button ion-button color="primary" (click)= "signOut()">Ok, vamos Sair!!!</button>
+    <p><strong> WARNING :</strong>Você já está <strong> Logado </strong> caso seja um equivoco, basta clicar  <strong> No Botão Acima </strong> para efetuar seu login novamente!!</p> -->
+  </ion-content>
+    <!--<ion-list>
+      <ion-searchbar [(ngModel)]="terms"></ion-searchbar> 
+    <ion-card *ngFor="let item of pedidos | filtro : terms" [ngClass]="{'item-inactive': !item.pedido.active }">
+
+      <ion-card-header>
+        <h1>{{ item.pedido.Cliente }}</h1>
+      </ion-card-header>
+
+      <ion-card-content>
+     <strong> <p>Mesa: {{ item.pedido.Mesa }}  </p> </strong>
+       <strong> <p> Lanche: {{ item.pedido.Lanche }}</p></strong>
+      <strong>  <p>Quantidade de Lanche: {{ item.pedido.Quantidade_Lanche }}</p></strong>
+       <strong> <p>Preço do Lanche: {{ item.pedido.Preco_Lanche}}</p></strong>
+        <strong><p>Bebida: {{ item.pedido.Bebida }}</p></strong>
+        <strong><p>Quantidade da Bebida: {{ item.pedido.Quatidade_Bebida }}</p></strong>
+ <strong> <p>Preço da Bebida: {{item.pedido.Preco_Bebida}}</p></strong>
+        <strong><p>Telefone: {{ item.pedido.Phone }}</p> </strong>        <strong><p>Data do Pedido: {{ item.pedido.Birth | date:'dd/MM/yyyy' }} </p></strong>
+      </ion-card-content>
+
+      <ion-row text-center>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="editaPedido(item);">
+            <ion-icon name="create"></ion-icon>
+            <div>Editar</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="removePedido(item);">
+            <ion-icon name="trash"></ion-icon>
+            <div>Excluir</div>
+          </button>
+        </ion-col>
+      <!--  <ion-col>
+          <a href="tel:{{ item.pedido.Phone }}" ion-button icon-left clear small>
+            <ion-icon name="call"></ion-icon>
+            <div>Ligar</div>
+          </a>
+        </ion-col>-->
+      <!--</ion-row>
+
+    </ion-card>
+  </ion-list>-->
+ <!--<ion-list>
+      <ion-item *ngFor='let x of pedidos'><span *ngFor='let y of pedidos'>Cliente: {{x.pedidos[y].Cliente}}| Mesa:{{x.pedidos[y].Mesa}}</span></ion-item>
+</ion-list> -->
+       <!--<ion-fab right bottom>
+    <button ion-fab mini color="secondary" (click)="adicionarpedido()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>-->
+
+
+ <!--<ion-list>
+    <ion-item *ngFor="let x of pedidos" (click)="selecionapedidos(x)">
+      {{x.bebida}} {{x.lanche}}
+    </ion-item>
+  </ion-list> -->
+
+
