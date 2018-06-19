@@ -39,7 +39,7 @@ export class FunctionsProvider {
 
     dataFormatada.ano = data.substring(0,4);
     dataFormatada.mes = data.substring(5,7);
-    dataFormatada.dia = data.substring(9,10);
+    dataFormatada.dia = data.substring(8,11);
 
     switch (dataFormatada.mes) {
       case "01":
