@@ -48,6 +48,6 @@ export class PesquisaPage {
   }
 
   verDetalhe(item) {
-    this.navCtrl.push(FilmeDetalhePage, {filmeSelecionado: item});
+    this.navCtrl.push(FilmeDetalhePage, {filmeSelecionado: item.id});
   }
 }

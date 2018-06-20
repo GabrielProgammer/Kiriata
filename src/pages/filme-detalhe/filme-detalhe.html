@@ -31,8 +31,14 @@
 	  		Adicionar aos favoritos
 	  		<ion-icon name="star"></ion-icon>
 	  	</button>
-
-	  	
+	  	<img src="../../assets/imgs/genero.png" class="icon">
+	  	<p><b>Gêneros: </b><span *ngFor="let genero of filme.genres">{{genero.name}} | </span>
+		</p>
+		<p><b>Receita: </b>${{filme.revenue}}
+			<img src="../../assets/imgs/receita.png" class="icon">
+		</p>
+		<p><b>Orçamento: </b>${{filme.budget}}
+			<img src="../../assets/imgs/orcamento.png" class="icon"></p>
 	  	<p><b>Idioma Original:</b> {{filme.original_language}} 
 	  		<img src="../../assets/imgs/idioma.png" class="icon"></p>
 		<p><b>Título Original:</b> {{filme.original_title}} 

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FunctionsProvider } from '../../providers/functions/functions';
+import { ApiProvider } from '../../providers/api/api';
+import { Filme } from '../../models/filme';
 
 /**
  * Generated class for the FilmeDetalhePage page.
@@ -16,16 +18,21 @@ import { FunctionsProvider } from '../../providers/functions/functions';
   templateUrl: 'filme-detalhe.html',
 })
 export class FilmeDetalhePage {
-	public filme;
+	public filme = {poster_path: '', release_date: {dia: '', mes: '', ano: ''}, id: ''};
 	public favorito;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-  	public storage: Storage, public functions: FunctionsProvider) {
-  	this.filme = this.navParams.get('filmeSelecionado');
-    console.log(this.filme);
-    if (!this.filme.release_date.mes)
+  	public storage: Storage, public functions: FunctionsProvider, public api: ApiProvider) {
+    this.api.getMovie(this.navParams.get('filmeSelecionado')).subscribe(res => 
+      {this.filme = res;
+        console.log(this.filme); 
+        this.storage.get('fav'+this.filme.id).then((result) => this.favorito = result);
+      if (!this.filme.release_date.mes)
       this.filme.release_date = this.functions.filtraData(this.filme.release_date);
-  	this.storage.get('favorito'+this.filme.title).then((result) => this.favorito = result);
+  });
+    
+    
+  	
   }
 
   ionViewDidLoad() {
@@ -33,21 +40,14 @@ export class FilmeDetalhePage {
   }
 
   addFavorito() {
-  	this.storage.set('favorito' + this.filme.title, true).then((result) => {
-  		this.favorito = result;
-  		console.log(this.favorito);
-      this.functions.favoritos.push(this.favorito);
-  		//this.functions.getFavoritos();
+  	  this.api.postFavorito(this.filme.id);
+      this.favorito = true;
   		this.functions.showToast('Adicionado aos favoritos!');
-  	});
   }
 
   remFavorito() {
-  	this.storage.set('favorito' + this.filme.title, false).then((result) => {
-  		this.favorito = result;
-  		console.log(this.favorito);
-  		//this.acProvider.getFavoritos();
-  		this.functions.showToast('Removido dos favoritos!');
-  	});
+  	this.api.deleteFavorito(this.filme.id);
+    this.favorito = false;
+  	this.functions.showToast('Removido dos favoritos!');
   }
 }

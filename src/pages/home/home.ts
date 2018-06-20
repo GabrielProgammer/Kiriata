@@ -17,10 +17,11 @@ export class HomePage {
   	this.api.getFilmesPopular().subscribe(res => { 
       this.filmesPopular = res.results;  
   	});
+    console.log(this.api.getFavoritos());
   }
 
   verDetalhe(x) {
-  	this.navCtrl.push(FilmeDetalhePage, {filmeSelecionado: x})
+  	this.navCtrl.push(FilmeDetalhePage, {filmeSelecionado: x.id})
   }
 
   favoritosPage() {
