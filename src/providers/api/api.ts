@@ -33,18 +33,6 @@ export class ApiProvider {
       '&language=pt-BR&query=' + termo +'&page=1&include_adult=true');
   }
 
-  postFavorito(id) {
-    this.storage.set('fav' + id, true);
-  }
-
-  deleteFavorito(id) {
-    this.storage.set('fav' + id, false); 
-  }
-
-  getFavoritos(): any {
-    this.storage.keys().then(favs => {return favs;});
-  }
-
   getMovie(id): any {
      return this.http.get('https://api.themoviedb.org/3/movie/' + id + '?api_key=' + this.apiKey +
       '&language=pt-BR');

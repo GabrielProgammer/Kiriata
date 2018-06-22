@@ -1,74 +1,74 @@
-<!--
-  Generated template for the FilmeDetalhePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
     <ion-title>{{ filme.title }}</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content>
 	<ion-card>
 		<img *ngIf="filme.poster_path != null" src="https://image.tmdb.org/t/p/w500{{filme.poster_path}}">
-
 		<img  *ngIf="filme.poster_path == null" src="../../assets/imgs/movie.png">
 	
-	  <ion-card-content>
-	  	<ion-title class="title-card" text-center>
-	  		{{filme.title}}
-	  	</ion-title>
-	  	<button ion-button full round icon-right (click)="remFavorito()" *ngIf="favorito" color="danger">
-	  		Remover dos favoritos
-	  		<ion-icon name="star"></ion-icon>
-	  	</button>
-	  	<button ion-button full round icon-right (click)="addFavorito()" *ngIf="!favorito">
-	  		Adicionar aos favoritos
-	  		<ion-icon name="star"></ion-icon>
-	  	</button>
-	  	<img src="../../assets/imgs/genero.png" class="icon">
-	  	<p><b>Gêneros: </b><span *ngFor="let genero of filme.genres">{{genero.name}} | </span>
-		</p>
-		<p><b>Receita: </b>${{filme.revenue}}
-			<img src="../../assets/imgs/receita.png" class="icon">
-		</p>
-		<p><b>Orçamento: </b>${{filme.budget}}
-			<img src="../../assets/imgs/orcamento.png" class="icon"></p>
-	  	<p><b>Idioma Original:</b> {{filme.original_language}} 
-	  		<img src="../../assets/imgs/idioma.png" class="icon"></p>
-		<p><b>Título Original:</b> {{filme.original_title}} 
-			<img src="../../assets/imgs/titulo.png" class="icon"></p>
-      <div class="date">
-        <span class="day">{{filme.release_date.dia}}</span>
-        <span class="month">{{filme.release_date.mes}}</span>
-        <span class="year">{{filme.release_date.ano}}</span>
-      </div>
-		<!-- <p><b>Data de lançamento:</b> {{filme.release_date}}
-			<img src="../../assets/imgs/data.png" class="icon"></p> -->
-		<p><b> Nota:</b> {{filme.vote_average}}
-			<img src="../../assets/imgs/nota.png" class="icon"></p>
-		<p><b>Número de votos:</b> {{filme.vote_count}}
-			<img src="../../assets/imgs/quantidade.png" class="icon"></p>
-		<ion-title text-center>
-			Sinopse 
-		</ion-title> 
-		<p text-justify>{{filme.overview}}</p>
-		<p text-center *ngIf="filme.overview == ''">Não disponivel :c</p>
-	  </ion-card-content>
-	
-	</ion-card>
-	<!-- <ion-fab bottom right>
-    <button ion-fab mini (click)="addFavorito()" *ngIf="!favorito">
-    	<ion-icon name="star"></ion-icon>
-    </button>
+		<ion-card-content>
+	  		<ion-title class="title-card" text-center>
+	  			{{filme.title}}
+	  		</ion-title>
 
-    <button ion-fab mini (click)="remFavorito()" *ngIf="favorito" color="danger">
-    	<ion-icon name="star-outline"></ion-icon>
-    </button>
-  </ion-fab> -->
+	  		<button ion-button full round icon-right (click)="remFavorito()" *ngIf="favorito" color="danger">
+	  			Remover dos favoritos
+	  			<ion-icon name="star"></ion-icon>
+	  		</button>
+
+	  		<button ion-button full round icon-right (click)="addFavorito()" *ngIf="!favorito">
+	  			Adicionar aos favoritos
+	  			<ion-icon name="star"></ion-icon>
+	  		</button>
+	  		<br/>
+
+	  		<img src="../../assets/imgs/genero.png" class="icon">
+	  		<p><b>Gêneros: </b>
+	  			<span *ngFor="let genero of filme.genres">
+	  				{{ genero.name }} | 
+	  			</span>
+			</p>
+
+			<p><b>Receita: </b>${{ filme.revenue }}
+				<img src="../../assets/imgs/receita.png" class="icon">
+			</p>
+
+			<p><b>Orçamento: </b>${{ filme.budget }}
+				<img src="../../assets/imgs/orcamento.png" class="icon">
+			</p>
+
+	  		<p><b>Idioma Original: </b>{{ filme.original_language }} 
+	  			<img src="../../assets/imgs/idioma.png" class="icon">
+	  		</p>
+
+			<p><b>Título Original: </b>{{filme.original_title}} 
+				<img src="../../assets/imgs/titulo.png" class="icon">
+			</p>
+
+      		<div class="date">
+        		<span class="day">{{filme.release_date.dia}}</span>
+        		<span class="month">{{filme.release_date.mes}}</span>
+        		<span class="year">{{filme.release_date.ano}}</span>
+      		</div>
+
+			<p><b> Nota: </b>{{ filme.vote_average }}
+				<img src="../../assets/imgs/nota.png" class="icon">
+			</p>
+
+			<p><b>Número de votos: </b>{{ filme.vote_count }}
+				<img src="../../assets/imgs/quantidade.png" class="icon">
+			</p>
+			<br/>
+
+			<ion-title text-center>
+				Sinopse 
+			</ion-title> 
+
+			<h2 text-justify class="sinopse">{{filme.overview}}</h2>
+			<p text-center *ngIf="filme.overview == ''">Não disponivel :c</p>
+	  </ion-card-content>
+	</ion-card>
 </ion-content>

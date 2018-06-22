@@ -1,7 +1,12 @@
+//Módulos
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+//Providers
 import { ApiProvider } from '../../providers/api/api';
+import { LocalStorageProvider } from '../../providers/local-storage/local-storage';
+//Models
 import { Filme } from '../../models/filme';
+//Pages
 import { FilmeDetalhePage } from '../filme-detalhe/filme-detalhe';
 import { FavoritosPage }  from '../favoritos/favoritos';
 
@@ -10,14 +15,14 @@ import { FavoritosPage }  from '../favoritos/favoritos';
   templateUrl: 'home.html'
 })
 export class HomePage {
-	public generos = {genres: ''};
 	public filmesPopular: Filme[] = Array();
 
-  constructor(public navCtrl: NavController, public api: ApiProvider) {
+  constructor(public navCtrl: NavController, public api: ApiProvider,
+      public storageFunctions: LocalStorageProvider) {
   	this.api.getFilmesPopular().subscribe(res => { 
       this.filmesPopular = res.results;  
   	});
-    console.log(this.api.getFavoritos());
+    console.log(this.storageFunctions.getFavoritos());
   }
 
   verDetalhe(x) {

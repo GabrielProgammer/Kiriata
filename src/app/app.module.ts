@@ -15,6 +15,7 @@ import { ApiProvider } from '../providers/api/api';
 import { FunctionsProvider } from '../providers/functions/functions';
 import { IonicStorageModule } from '@ionic/storage';
 import { FavoritosPage } from '../pages/favoritos/favoritos';
+import { LocalStorageProvider } from '../providers/local-storage/local-storage';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { FavoritosPage } from '../pages/favoritos/favoritos';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider,
-    FunctionsProvider
+    FunctionsProvider,
+    LocalStorageProvider
   ]
 })
 export class AppModule {}

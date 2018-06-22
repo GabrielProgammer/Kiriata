@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { FunctionsProvider } from '../../providers/functions/functions';
 import { ApiProvider } from '../../providers/api/api';
 import { Filme } from '../../models/filme';
+import { LocalStorageProvider } from '../../providers/local-storage/local-storage';
 
 /**
  * Generated class for the FilmeDetalhePage page.
@@ -22,7 +23,8 @@ export class FilmeDetalhePage {
 	public favorito;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-  	public storage: Storage, public functions: FunctionsProvider, public api: ApiProvider) {
+  	             public storage: Storage, public functions: FunctionsProvider,
+                public api: ApiProvider, public storageFunctions: LocalStorageProvider) {
     this.api.getMovie(this.navParams.get('filmeSelecionado')).subscribe(res => 
       {this.filme = res;
         console.log(this.filme); 
@@ -40,13 +42,13 @@ export class FilmeDetalhePage {
   }
 
   addFavorito() {
-  	  this.api.postFavorito(this.filme.id);
+  	  this.storageFunctions.postFavorito(this.filme.id);
       this.favorito = true;
   		this.functions.showToast('Adicionado aos favoritos!');
   }
 
   remFavorito() {
-  	this.api.deleteFavorito(this.filme.id);
+  	this.storageFunctions.deleteFavorito(this.filme.id);
     this.favorito = false;
   	this.functions.showToast('Removido dos favoritos!');
   }

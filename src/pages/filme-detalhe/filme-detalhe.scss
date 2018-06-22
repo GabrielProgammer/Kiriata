@@ -2,25 +2,24 @@ page-filme-detalhe {
 	.title.title-card {
 		background-color: #A5D3F3;
 		box-shadow: 6px 6px #B7B5B5;
-		margin-bottom: 1.3rem;
+	 	margin-bottom: 1.3rem;
 	}
 
 	.card {
-		background-color: #C7C3F9;
+	 	background-color: #C7C3F9;
 	}
 
 	img.icon {
-		width: 2rem;
+	 	width: 2rem;
 		float: left;	
 		margin-right: 10px;
 	}
 
-
 	img.middle { vertical-align: middle; }
-  @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-* {
-  box-sizing: border-box;
-}
+  	@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+	* {
+  	box-sizing: border-box;
+	}
 
 
 .date {
@@ -46,6 +45,12 @@ page-filme-detalhe {
 .date .month,
 .date .year {
   font-size: 12px;
+}
+
+.sinopse {
+  background-color: #E8E2F1;
+  padding: 0.8em;
+  box-shadow: 6px 6px #B7B5B5;
 }
 }
 
