@@ -24,7 +24,7 @@ export class LocalStorageProvider {
   }
 
   getFavoritos(): any {
-    this.storage.keys().then(favs => { return favs});
+    this.storage.keys().then(favs => {console.log(favs); return favs});
   }
 
 }
