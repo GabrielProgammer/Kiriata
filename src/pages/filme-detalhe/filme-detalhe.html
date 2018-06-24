@@ -45,7 +45,7 @@
 	  				<img src="../../assets/imgs/titulo.png" class="icon">
 					<p><b>Título Original: </b>{{filme.original_title}} 
 					</p>
-
+		
 					<p><b> Nota: </b>{{ filme.vote_average }}
 						<img src="../../assets/imgs/nota.png" class="icon">
 					</p>
@@ -68,6 +68,7 @@
 			  		<div class="card-header" text-center><b>Mais informações sobre o filme</b></div>
 			  		<div class="card-body">
 			    		<p class="card-text">
+			    		
 					  	<p><b>Receita: </b>${{ filme.revenue }}
 						<img src="../../assets/imgs/receita.png" class="icon">
 						</p>
@@ -79,6 +80,19 @@
 			  			<p><b>Idioma Original: </b>{{ filme.original_language }} 
 			  				<img src="../../assets/imgs/idioma.png" class="icon">
 			  			</p>
+
+			  			<p><b>Tempo de filme: </b>{{ filme.runtime }} Minutos
+			  				<img src="../../assets/imgs/tempo-filme.png" class="icon">
+			  			</p>
+
+			  			<p><b>Líguas faladas: </b>
+			  				<span *ngFor="let x of filme.spoken_languages">
+			  					{{ x.name }} <span *ngIf="x.length > 1">|</span>
+			  				</span>
+			  				<img src="../../assets/imgs/linguas-faladas.png" class="icon">
+			  			</p>
+
+			  			
     				</div>
 				</div>
 			</div>
@@ -93,7 +107,7 @@
   				<div class="card bg-light mb-3">
 	  				<div class="card-header" text-center><b>Sinopse do Filme</b></div>
 	  				<div class="card-body">
-	      				<p class="card-text">{{filme.overview}}
+	      				<p class="card-text" text-justify>{{filme.overview}}
 	      					<span text-center *ngIf="filme.overview == ''">Não disponivel :c</span>
 	      				</p>
 	    			</div>

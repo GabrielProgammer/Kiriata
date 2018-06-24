@@ -81,4 +81,25 @@ export class FunctionsProvider {
    }
     return dataFormatada;
   }
+
+  filtraIdioma(idioma) {
+    switch (idioma) {
+      case "en":
+        return "Inglês";
+       case "pt":
+         return "Português";
+      case "ja":
+        return "Japonês";
+      case "it":
+        return "Italiano";
+      case "id":
+        return "Indonésio";
+      case "ko":
+        return "Coreano";
+      case "es":
+        return "Espanhol";
+      default:
+        return idioma;
+    }
+  }
 }

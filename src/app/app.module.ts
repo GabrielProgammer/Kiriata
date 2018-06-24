@@ -8,6 +8,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { FilmeDetalhePage } from '../pages/filme-detalhe/filme-detalhe';
 import { PesquisaPage } from '../pages/pesquisa/pesquisa';
+import { GenerosPage } from '../pages/generos/generos';
+import { GeneroSelecionadoPage } from '../pages/genero-selecionado/genero-selecionado';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,7 +26,9 @@ import { LocalStorageProvider } from '../providers/local-storage/local-storage';
     ListPage,
     FilmeDetalhePage,
     PesquisaPage,
-    FavoritosPage
+    FavoritosPage,
+    GenerosPage,
+    GeneroSelecionadoPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,9 @@ import { LocalStorageProvider } from '../providers/local-storage/local-storage';
     ListPage,
     FilmeDetalhePage,
     PesquisaPage,
-    FavoritosPage
+    FavoritosPage,
+    GenerosPage,
+    GeneroSelecionadoPage
   ],
   providers: [
     StatusBar,

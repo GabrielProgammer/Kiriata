@@ -37,4 +37,15 @@ export class ApiProvider {
      return this.http.get('https://api.themoviedb.org/3/movie/' + id + '?api_key=' + this.apiKey +
       '&language=pt-BR');
   }
+
+  getDiscoverMovie(genero, page?):any {
+    return this.http.get('https://api.themoviedb.org/3/discover/movie?api_key=' + this.apiKey +
+    '&language=pt-br&sort_by=popularity.desc&include_adult=false&include_video=false&page='+ page +'&with_genres='
+    + genero);
+  }
+
+  getGeneros() {
+    return this.http.get('https://api.themoviedb.org/3/genre/movie/list?api_key=' + this.apiKey + 
+      '&language=pt-br');
+  }
 }

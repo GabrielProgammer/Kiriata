@@ -19,7 +19,7 @@ import { LocalStorageProvider } from '../../providers/local-storage/local-storag
   templateUrl: 'filme-detalhe.html',
 })
 export class FilmeDetalhePage {
-	public filme = {poster_path: '', release_date: {dia: '', mes: '', ano: ''}, id: ''};
+	public filme = {poster_path: '', release_date: {dia: '', mes: '', ano: ''}, id: '', spoken_languages: ''};
 	public favorito;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
@@ -30,7 +30,12 @@ export class FilmeDetalhePage {
         console.log(this.filme); 
         this.storage.get('fav'+this.filme.id).then((result) => this.favorito = result);
       if (!this.filme.release_date.mes)
-      this.filme.release_date = this.functions.filtraData(this.filme.release_date);
+        this.filme.release_date = this.functions.filtraData(this.filme.release_date);
+        this.filme.original_language = this.functions.filtraIdioma(this.filme.original_language);
+        for (var x = 0; x < this.filme.spoken_languages.length; x++) {
+          console.log(this.filme.spoken_languages[x].name);
+          this.filme.spoken_languages[x].name = this.functions.filtraIdioma(this.filme.spoken_languages[x].iso_639_1);
+        }
   });
     
     
