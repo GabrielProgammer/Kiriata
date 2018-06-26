@@ -20,7 +20,7 @@ export class GenerosPage {
 	public generos:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
   	public api: ApiProvider) {
-  	this.api.getGeneros().subscribe(res => { this.generos  = res.genres});
+  	//this.api.getGeneros().subscribe(res => { this.generos  = res.genres});
   }
 
   ionViewDidLoad() {

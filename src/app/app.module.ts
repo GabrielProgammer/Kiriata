@@ -18,6 +18,9 @@ import { FunctionsProvider } from '../providers/functions/functions';
 import { IonicStorageModule } from '@ionic/storage';
 import { FavoritosPage } from '../pages/favoritos/favoritos';
 import { LocalStorageProvider } from '../providers/local-storage/local-storage';
+import { DinheiroPipe } from '../pipes/dinheiro/dinheiro';
+import { FiltraIdiomaPipe } from '../pipes/filtra-idioma/filtra-idioma';
+import { TempoFilmePipe } from '../pipes/tempo-filme/tempo-filme';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { LocalStorageProvider } from '../providers/local-storage/local-storage';
     PesquisaPage,
     FavoritosPage,
     GenerosPage,
-    GeneroSelecionadoPage
+    GeneroSelecionadoPage,
+    DinheiroPipe,
+    FiltraIdiomaPipe,
+    TempoFilmePipe
   ],
   imports: [
     BrowserModule,

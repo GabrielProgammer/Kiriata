@@ -19,7 +19,7 @@
 	  		<ion-title class="title-card" text-center>
 	  			{{filme.title}}
 	  		</ion-title>
-
+	 
 	  		<button ion-button full round icon-right (click)="remFavorito()" *ngIf="favorito" color="danger">
 	  			Remover dos favoritos
 	  			<ion-icon name="star"></ion-icon>
@@ -69,27 +69,27 @@
 			  		<div class="card-body">
 			    		<p class="card-text">
 			    		
-					  	<p><b>Receita: </b>${{ filme.revenue }}
+					  	<p><b>Receita: </b>${{ filme.revenue |dinheiro}}
 						<img src="../../assets/imgs/receita.png" class="icon">
 						</p>
 
-						<p><b>Orçamento: </b>${{ filme.budget }}
+						<p><b>Orçamento: </b>${{ filme.budget | dinheiro}}
 							<img src="../../assets/imgs/orcamento.png" class="icon">
 						</p>
 
-			  			<p><b>Idioma Original: </b>{{ filme.original_language }} 
+			  			<p><b>Idioma Original: </b>{{ filme.original_language | filtraIdioma}} 
 			  				<img src="../../assets/imgs/idioma.png" class="icon">
 			  			</p>
 
-			  			<p><b>Tempo de filme: </b>{{ filme.runtime }} Minutos
+			  			<p><b>Tempo de filme: </b>{{ filme.runtime | tempoFilme }}
 			  				<img src="../../assets/imgs/tempo-filme.png" class="icon">
 			  			</p>
 
 			  			<p><b>Líguas faladas: </b>
-			  				<span *ngFor="let x of filme.spoken_languages">
-			  					{{ x.name }} <span *ngIf="x.length > 1">|</span>
-			  				</span>
 			  				<img src="../../assets/imgs/linguas-faladas.png" class="icon">
+			  				<span *ngFor="let x of filme.spoken_languages">
+			  					{{ x.iso_639_1 | filtraIdioma }} |
+			  				</span>
 			  			</p>
 
 			  			
@@ -112,7 +112,24 @@
 	      				</p>
 	    			</div>
   				</div>	
-    		</div>			
+    		</div>	
+
+    		<p>
+		 	<button ion-button full icon-right class="btn" data-toggle="collapse" href="#trailer" role="button" aria-expanded="false" aria-controls="collapseExample" color="dark">
+    			Mostrar Trailer
+    			<ion-icon name="arrow-down"></ion-icon>
+  			</button>
+
+  			<div class="collapse" id="trailer">
+  				<div class="card text-white bg-dark mb-3">
+	  				<div class="card-header" text-center><b>Trailer do Filme</b></div>
+	  				<div class="card-body">
+	      				<p class="card-text text-white">
+	      					Em desenvolvimento.
+	      				</p>
+	    			</div>
+  				</div>	
+    		</div>	
 		</ion-card-content>
 	</ion-card>
 	<ion-fab bottom right>
