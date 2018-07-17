@@ -48,4 +48,9 @@ export class ApiProvider {
     return this.http.get('https://api.themoviedb.org/3/genre/movie/list?api_key=' + this.apiKey + 
       '&language=pt-br');
   }
+
+  getVideos(id):any {
+    return this.http.get('https://api.themoviedb.org/3/movie/' + id + 
+      '/videos?api_key=' + this.apiKey + '&language=pt-br');
+  }
 }

@@ -6,6 +6,7 @@ import { ApiProvider } from '../../providers/api/api';
 import { Filme } from '../../models/filme';
 import { LocalStorageProvider } from '../../providers/local-storage/local-storage';
 import { DinheiroPipe } from '../../pipes/dinheiro/dinheiro';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 /**
  * Generated class for the FilmeDetalhePage page.
@@ -25,11 +26,16 @@ export class FilmeDetalhePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
   	             public storage: Storage, public functions: FunctionsProvider,
-                public api: ApiProvider, public storageFunctions: LocalStorageProvider) {
+                public api: ApiProvider, public storageFunctions: LocalStorageProvider,
+                private youtube: YoutubeVideoPlayer) {
     console.log(this.filme);
-    this.api.getMovie(this.navParams.get('filmeSelecionado')).subscribe(res => 
-      {this.filme = res;
-        console.log(this.filme); 
+    this.api.getMovie(this.navParams.get('filmeSelecionado')).subscribe(res => { 
+      this.filme = res;
+      this.api.getVideos(this.navParams.get('filmeSelecionado')).subscribe(res => { 
+      this.filme.videos = res;
+       console.log(this.filme);
+    });
+
         this.storage.get('fav'+this.filme.id).then((result) => this.favorito = result);
       if (!this.filme.release_date.mes)
         this.filme.release_date = this.functions.filtraData(this.filme.release_date);
@@ -41,9 +47,13 @@ export class FilmeDetalhePage {
   }
 
   ionViewDidLoad() {
+    
     console.log('ionViewDidLoad FilmeDetalhePage');
   }
 
+  openVideo(videoId) {
+    this.youtube.openVideo(videoId);
+  }
   addFavorito() {
   	  this.storageFunctions.postFavorito(this.filme.id);
       this.favorito = true;

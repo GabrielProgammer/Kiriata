@@ -15,6 +15,8 @@ export class Filme {
 		this.spoken_languages = [{iso_639_1: '', name:''}];
 		this.overview = '';
 		this.genres = [{id: 0, name: ''}];
+		this.videos = {id: 0, results: [{id: '', iso_639_1: '', iso_3166: '',
+		key: '', name: '', site: '', size: 0, type: ''}]};
 	}
 
 	adult: boolean;
@@ -50,4 +52,8 @@ export class Filme {
 	video: boolean;
 	vote_average: number;
 	vote_count: number;
+	videos: { id: number, results: [{
+				id: string, iso_639_1: string, iso_3166: string, key: string, name: string,
+				site: string, size: number, type: string
+	}]};
 }

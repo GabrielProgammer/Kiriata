@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule} from '@angular/common/http'; 
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -10,6 +12,7 @@ import { FilmeDetalhePage } from '../pages/filme-detalhe/filme-detalhe';
 import { PesquisaPage } from '../pages/pesquisa/pesquisa';
 import { GenerosPage } from '../pages/generos/generos';
 import { GeneroSelecionadoPage } from '../pages/genero-selecionado/genero-selecionado';
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,6 +24,7 @@ import { LocalStorageProvider } from '../providers/local-storage/local-storage';
 import { DinheiroPipe } from '../pipes/dinheiro/dinheiro';
 import { FiltraIdiomaPipe } from '../pipes/filtra-idioma/filtra-idioma';
 import { TempoFilmePipe } from '../pipes/tempo-filme/tempo-filme';
+import { BackendlessApiProvider } from '../providers/backendless-api/backendless-api';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,7 @@ import { TempoFilmePipe } from '../pipes/tempo-filme/tempo-filme';
     FavoritosPage,
     GenerosPage,
     GeneroSelecionadoPage,
+    LoginPage,
     DinheiroPipe,
     FiltraIdiomaPipe,
     TempoFilmePipe
@@ -40,6 +45,7 @@ import { TempoFilmePipe } from '../pipes/tempo-filme/tempo-filme';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
+    HttpModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
         driverOrder: ['indexeddb', 'sqlite', 'websql']
@@ -54,7 +60,8 @@ import { TempoFilmePipe } from '../pipes/tempo-filme/tempo-filme';
     PesquisaPage,
     FavoritosPage,
     GenerosPage,
-    GeneroSelecionadoPage
+    GeneroSelecionadoPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -62,7 +69,9 @@ import { TempoFilmePipe } from '../pipes/tempo-filme/tempo-filme';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider,
     FunctionsProvider,
-    LocalStorageProvider
+    LocalStorageProvider,
+    YoutubeVideoPlayer,
+    BackendlessApiProvider
   ]
 })
 export class AppModule {}

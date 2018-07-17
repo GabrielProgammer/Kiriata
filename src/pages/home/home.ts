@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 //Providers
 import { ApiProvider } from '../../providers/api/api';
-import { LocalStorageProvider } from '../../providers/local-storage/local-storage';
+import { LocalStorageProvider } from '../../providers/local-storage/local-storage'
+import { BackendlessApiProvider } from '../../providers/backendless-api/backendless-api';
 //Models
 import { Filme } from '../../models/filme';
 //Pages
@@ -18,7 +19,8 @@ export class HomePage {
 	public filmesPopular: Filme[] = Array();
 
   constructor(public navCtrl: NavController, public api: ApiProvider,
-      public storageFunctions: LocalStorageProvider) {
+      public storageFunctions: LocalStorageProvider, public backApi: BackendlessApiProvider) {
+    this.backApi.login('gabriel.victor.ti@gmail.com', 'asadeltatuf1');
   	this.api.getFilmesPopular().subscribe(res => { 
       this.filmesPopular = res.results;  
   	});
